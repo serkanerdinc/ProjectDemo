@@ -2,7 +2,7 @@
 
 SQL database'e yüklenir
 
-database configleri düzenlenir
+config/database configleri düzenlenir
 
 application/views/compiled dizini yazılabilir olarak ayarlanır
 
