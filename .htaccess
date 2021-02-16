@@ -1,0 +1,27 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+	RewriteRule ^theme/(.*)/images/(.*)$ application/views/$1/images/$2 [L]
+	RewriteRule ^theme/(.*)/css/(.*)$ application/views/$1/css/$2 [L]
+	RewriteRule ^theme/(.*)/js/(.*)$ application/views/$1/js/$2 [L]
+	RewriteRule ^theme/(.*)/fonts/(.*)$ application/views/$1/fonts/$2 [L]
+	RewriteRule ^theme/(.*)/media/(.*)$ application/views/$1/media/$2 [L]
+	RewriteRule ^theme/(.*)/plugins/(.*)$ application/views/$1/plugins/$2 [L]
+
+    RewriteCond %{REQUEST_URI} ^system.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+    
+    RewriteCond %{REQUEST_URI} ^application.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+    
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?/$1 [L]
+    
+    
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+    ErrorDocument 404 /index.php
+</IfModule>
