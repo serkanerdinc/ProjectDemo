@@ -92,7 +92,7 @@
 				</div>
 				<div class="col-md-5 col-sm-5">
 					<div class="">
-						<img id="news_pic" src="/upload/images/{%$news.post_image%}" style="height: 250px" alt=""/>
+						<img id="news_pic" src="{%base_url()%}upload/images/{%$news.post_image%}" style="height: 250px" alt=""/>
 					</div>
 				</div>
 			</div>
@@ -207,13 +207,13 @@
 			$("#nextPage").click(function(){
 				$.ajax({
 					type: "GET",
-					url: "/nextpage/news/"+$(this).attr('data-value'),
+					url: "{%base_url()%}nextpage/news/"+$(this).attr('data-value'),
 					data: "",
 					dataType: 'json',
 					success: function(response){
 						$("#news_name").html(response.name);
 						$("#news_content").html(response.short_content);
-						$("#news_pic").attr("src","/upload/images/"+response.post_image);
+						$("#news_pic").attr("src","{%base_url()%}upload/images/"+response.post_image);
 						$("#nextPage").attr("data-value",response.page_id);
 					}
 				});
